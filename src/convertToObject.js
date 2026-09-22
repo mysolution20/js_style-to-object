@@ -5,24 +5,29 @@
  *
  * @return {object}
  */
+'use strict';
+
+/**
+ * @param {string} sourceString
+ *
+ * @return {object}
+ */
 function convertToObject(sourceString) {
-  const result = {};
-  const rules = sourceString.split(';');
+  const stylesObject = {};
 
-  for (const rule of rules) {
-    const colonIndex = rule.indexOf(':');
-
-    if (colonIndex !== -1) {
+  sourceString
+    .split(';')
+    .map((rule) => rule.trim())
+    .filter(Boolean)
+    .forEach((rule) => {
+      const colonIndex = rule.indexOf(':');
       const property = rule.slice(0, colonIndex).trim();
       const value = rule.slice(colonIndex + 1).trim();
 
-      if (property) {
-        result[property] = value;
-      }
-    }
-  }
+      stylesObject[property] = value;
+    });
 
-  return result;
+  return stylesObject;
 }
 
 module.exports = convertToObject;
