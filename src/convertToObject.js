@@ -1,12 +1,3 @@
-'use strict';
-
-/**
- * @param {string} sourceString
- *
- * @return {object}
- */
-'use strict';
-
 /**
  * @param {string} sourceString
  *
